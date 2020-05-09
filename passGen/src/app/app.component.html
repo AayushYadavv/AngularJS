@@ -1,0 +1,67 @@
+<div class="container is-widescreen">
+  <div class="columns is-mobile">
+    <div class="column is-half is-offset-one-quarter">
+      <div class="box has-background-grey-lighter">
+        <h1 class="title">Password Generator</h1>
+
+        <div class="field">
+          <label class="label">Length:</label>
+
+          <div class="control">
+            <input
+              class="input is-primary"
+              autofocus
+              type="text"
+              (input)="getLength($event.target.value)"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input class="checkbox" (change)="includeLet()" type="checkbox" />
+              <b>Include Letters</b>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input (change)="includeChar()" type="checkbox" />
+              <b>Include Characters</b>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input (change)="includeNo()" type="checkbox" />
+              <b>Include Numbers</b>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button
+              class="button"
+              [disabled]="!(lenght && (ch || num || letter))"
+              (click)="genPass()"
+            >
+              Generate
+            </button>
+          </div>
+        </div>
+        <div class="box"  *ngIf="password">
+          <label class="label ">Generated Passsword</label>
+          <div class="field">
+            <div class="control">
+              <input id="inputpass" class="input is-link" (focus)="$event.target.select()" [value]="password" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
